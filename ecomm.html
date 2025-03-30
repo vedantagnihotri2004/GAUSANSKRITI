@@ -18,19 +18,38 @@
             justify-content: space-between;
             align-items: center; 
         }
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
+        .navbar {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        nav ul li {
-            margin: 0 15px;
-            cursor: pointer;
-            font-weight: bold;
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 250px;
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
             color: #264653;
+            font-weight: bold;
+            transition: color 0.3s ease;
         }
-        .active {
+
+        .nav-links a:hover {
             color: #2D6A4F;
         }
         .hero {
@@ -197,16 +216,18 @@
 </head>
 <body>
     <header>
-        <img src="logo.png" alt="Logo" height="40">
-        <nav>
-           
-       
+      <nav class="container navbar">
+        <div class="logo">
+            <img src="logo.png" alt="Dairy Knowledge Logo">
+        </div>
+        <div class="nav-links">
             <a href="index.html">HOME</a>
-            <a href="ai.html" class="active">AI-TECH</a>
-            <a href="ecomm.html">E-COMM</a>
-            <a href="community1.html">COMMUNITY</a>
-        
-        </nav>
+            <a href="ai.html">AI-TECH</a>
+            <a href="ecomm.html">E COMMERCE</a>
+            <a href="community1.html">COMUNNITY</a>
+        </div>
+    </nav>
+
     </header>
     
     <section class="hero">
