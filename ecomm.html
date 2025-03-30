@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dairy Farmers Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F0FBE4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+           
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 15px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #264653;
+        }
+        .active {
+            color: #2D6A4F;
+        }
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px;
+        }
+        .hero-text {
+            width: 50%;
+        }
+        .hero img {
+            width: 45%;
+            border-radius: 10px;
+        }
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .search-bar input {
+            padding: 10px;
+            width: 60%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-bar button {
+            padding: 10px 20px;
+            background: #FF6B35;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .farmers-section {
+            padding: 40px;
+        }
+        .farmers-list {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .farmer-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            width: 280px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .farmer-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+        }
+        .farmer-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px;
+            border: 4px solid #b0cfb4;
+        }
+        .farmer-rating {
+            color: #FFD700;
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        .farmer-products {
+            background-color: #F0FBE4;
+            padding: 8px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .connect-btn {
+            background-color: #2D6A4F;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 80%;
+            margin-top: 10px;
+        }
+        .connect-btn:hover {
+            background-color: #1B4332;
+        }
+        .farmers-container {
+            background-color: #b0cfb4;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .distance-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #FF6B35;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .map-section {
+            text-align: center;
+            padding: 40px;
+        }
+        .map img {
+            width: 80%;
+            border-radius: 10px;
+        }
+        .cta {
+            text-align: center;
+            padding: 40px;
+        }
+        .cta button {
+            padding: 10px 20px;
+            background: #264653;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        footer {
+            background-color: #264653;
+            color: white;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .footer-left img {
+            height: 60px;
+        }
+        .footer-links {
+            display: flex;
+            gap: 250px;
+        }
+        .footer-links div {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .footer-links h4 {
+            margin-bottom: 10px;
+        }
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Logo" height="40">
+        <nav>
+           <ul>
+                <li>HOME</li>
+                <li>AI-TECH</li>
+                <li class="active" style="color:black; font-weight: bold;">E-COMM</li>
+                <li>CONTACT US</li>
+           </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Find the Best & Nearest Dairy Farmers</h1>
+            <p>Connect directly with verified local dairy farmers. Get fresh products delivered to your doorstep!</p>
+            <div class="search-bar">
+                <input type="text" id="location-input" placeholder="Enter your location">
+                <button id="find-farmers-btn" style="color: black;">Find Farmers</button>
+            </div>
+        </div>
+        <img src="farmers.jpeg" alt="Farmers">
+    </section>
+
+    <section class="farmers-section">
+        <div class="farmers-container">
+            <h2 style="text-align: center; margin-bottom: 20px; color: #264653; font-size: 32px;">Nearby Farmers</h2>
+            
+            <div class="farmers-list">
+                <div class="farmer-card">
+                    <span class="distance-badge">2.3 miles away</span>
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Vedant Agnihotri" class="farmer-image">
+                    <h3>Vedant Agnihotri</h3>
+                    <div class="farmer-rating">★★★★★</div>
+                    <div class="farmer-products">
+                        <strong>Products:</strong> Fresh Milk, Yogurt
+                    </div>
+                    <button class="connect-btn">Connect Now</button>
+                </div>
+                
+                <div class="farmer-card">
+                    <span class="distance-badge">3 miles away</span>
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Somya Tyagi" class="farmer-image">
+                    <h3>Somya Tyagi</h3>
+                    <div class="farmer-rating">★★★★☆</div>
+                    <div class="farmer-products">
+                        <strong>Products:</strong> Organic Milk, Ice Cream
+                    </div>
+                    <button class="connect-btn">Connect Now</button>
+                </div>
+                
+                <div class="farmer-card">
+                    <span class="distance-badge">4.5 miles away</span>
+                    <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Mukul Parmar" class="farmer-image">
+                    <h3>Mukul Parmar</h3>
+                    <div class="farmer-rating">★★★★★</div>
+                    <div class="farmer-products">
+                        <strong>Products:</strong> Premium Milk, Artisan Cheese
+                    </div>
+                    <button class="connect-btn">Connect Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+<div>
+    <section class="map-section">
+        <h2>Find Farmers Near You</h2>
+        <div id="map" style="width: 80%; height: 400px; margin: 0 auto; border-radius: 10px; transition: all 0.3s ease;"></div>
+        <p class="map-instructions">Hover over the map to zoom in and see details</p>
+    </section>
+</div>
+
+    <section class="cta">
+        <h2>Are You a Dairy Farmer?</h2>
+        <p>Join our platform to connect with local customers and grow your business.</p>
+        <button>Register Now</button>
+    </section>
+
+    <footer>
+        <div class="footer-left">
+            <img src="logo.png" alt="Logo">
+            <p>Preserving indigenous cow breeds for a sustainable future.</p>
+        </div>
+        <div class="footer-links">
+            <div>
+                <h4>Quick Links</h4>
+                <p>Home</p>
+                <p>AI Tech</p>
+                <p>E-commerce</p>
+                <p>Contact</p>
+            </div>
+            <div>
+                <h4>Resources</h4>
+                <p>Blog</p>
+                <p>Research</p>
+                <p>Case Studies</p>
+            </div>
+            <div>
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <p>🔵 🐦 📸 🔗</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Google Maps API Script -->
+    <script>
+        let map;
+        let markers = [];
+        const farmerLocations = [
+            { name: "Vedant Agnihotri", position: { lat: 28.6139, lng: 77.2090 }, products: "Fresh Milk, Yogurt", rating: 5, image: "https://randomuser.me/api/portraits/men/32.jpg" },
+            { name: "Somya Tyagi", position: { lat: 28.5355, lng: 77.3910 }, products: "Organic Milk, Ice Cream", rating: 4, image: "https://randomuser.me/api/portraits/women/44.jpg" },
+            { name: "Mukul Parmar", position: { lat: 28.7041, lng: 77.1025 }, products: "Premium Milk, Artisan Cheese", rating: 5, image: "https://randomuser.me/api/portraits/men/67.jpg" }
+        ];
+
+        // Initialize the map
+        function initMap() {
+            // Center coordinates for India (Delhi)
+            const center = { lat: 28.6139, lng: 77.2090 };
+            
+            // Create the map
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 9,
+                center: center,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+            
+            // Add markers for each farmer
+            addFarmerMarkers();
+            
+            // Add hover effect to the map
+            const mapElement = document.getElementById("map");
+            
+            mapElement.addEventListener("mouseenter", () => {
+                mapElement.style.boxShadow = "0 8px 16px rgba(0, 0, 0, 0.2)";
+                mapElement.style.transform = "scale(1.02)";
+            });
+            
+            mapElement.addEventListener("mouseleave", () => {
+                mapElement.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
+                mapElement.style.transform = "scale(1)";
+            });
+
+            // Connect search button to map functionality
+            document.getElementById('find-farmers-btn').addEventListener('click', searchLocation);
+        }
+
+        // Add markers for farmers
+        function addFarmerMarkers() {
+            // Clear existing markers
+            clearMarkers();
+            
+            // Add markers for each farmer
+            farmerLocations.forEach(farmer => {
+                const marker = new google.maps.Marker({
+                    position: farmer.position,
+                    map: map,
+                    title: farmer.name,
+                    animation: google.maps.Animation.DROP
+                });
+                
+                markers.push(marker);
+                
+                // Info window for each marker
+                const infoWindow = new google.maps.InfoWindow({
+                    content: `
+                        <div style="padding: 10px;">
+                            <strong>${farmer.name}</strong><br>
+                            ${farmer.products}<br>
+                            <button style="background-color: #2D6A4F; color: white; border: none; 
+                            padding: 5px 10px; margin-top: 5px; border-radius: 5px; cursor: pointer;">
+                            Connect Now</button>
+                        </div>
+                    `
+                });
+                
+                // Open info window when marker is clicked
+                marker.addListener("click", () => {
+                    infoWindow.open(map, marker);
+                });
+            });
+        }
+
+        // Clear all markers from the map
+        function clearMarkers() {
+            markers.forEach(marker => {
+                marker.setMap(null);
+            });
+            markers = [];
+        }
+
+        // Search for location and update map
+        function searchLocation() {
+            const locationInput = document.getElementById('location-input').value;
+            
+            if (locationInput.trim() === '') {
+                alert('Please enter a location to search');
+                return;
+            }
+            
+            // Use Google Maps Geocoding API to convert address to coordinates
+            const geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ address: locationInput }, (results, status) => {
+                if (status === 'OK') {
+                    // Center map on searched location
+                    const searchLocation = results[0].geometry.location;
+                    map.setCenter(searchLocation);
+                    map.setZoom(12);
+                    
+                    // Clear existing markers
+                    clearMarkers();
+                    
+                    // Add a marker for the searched location
+                    const searchMarker = new google.maps.Marker({
+                        map: map,
+                        position: searchLocation,
+                        title: 'Your Location',
+                        icon: {
+                            url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+                        }
+                    });
+                    
+                    markers.push(searchMarker);
+                    
+                    // Find nearby farmers based on distance
+                    const nearbyFarmers = filterFarmersByDistance(searchLocation);
+                    
+                    // Update the farmers list in the UI
+                    updateFarmersList(nearbyFarmers);
+                    
+                    // Add markers for the nearby farmers
+                    addNearbyFarmerMarkers(nearbyFarmers);
+                    
+                    // Scroll to farmers section
+                    document.querySelector('.farmers-section').scrollIntoView({ 
+                        behavior: 'smooth' 
+                    });
+                    
+                } else {
+                    alert('Could not find location: ' + status);
+                }
+            });
+        }
+
+        // Calculate distance between two points using Haversine formula
+        function calculateDistance(point1, point2) {
+            const R = 3958.8; // Earth's radius in miles
+            const lat1 = point1.lat();
+            const lon1 = point1.lng();
+            const lat2 = point2.lat;
+            const lon2 = point2.lng;
+            
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            
+            const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+                    Math.sin(dLon/2) * Math.sin(dLon/2);
+            
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            const distance = R * c;
+            
+            return distance.toFixed(1); // Return distance with 1 decimal place
+        }
+
+        // Filter farmers by distance from searched location
+        function filterFarmersByDistance(searchLocation) {
+            const maxDistance = 10; // Maximum distance in miles to consider a farmer nearby
+            const nearbyFarmers = [];
+            
+            farmerLocations.forEach(farmer => {
+                const distance = calculateDistance(searchLocation, farmer.position);
+                
+                if (distance <= maxDistance) {
+                    // Add farmer to nearby farmers with their distance
+                    nearbyFarmers.push({
+                        ...farmer,
+                        distance: distance
+                    });
+                }
+            });
+            
+            // Sort farmers by distance (closest first)
+            nearbyFarmers.sort((a, b) => a.distance - b.distance);
+            
+            return nearbyFarmers;
+        }
+        
+        // Add markers for nearby farmers
+        function addNearbyFarmerMarkers(nearbyFarmers) {
+            nearbyFarmers.forEach(farmer => {
+                const marker = new google.maps.Marker({
+                    position: farmer.position,
+                    map: map,
+                    title: farmer.name,
+                    animation: google.maps.Animation.DROP
+                });
+                
+                markers.push(marker);
+                
+                // Info window for each marker
+                const infoWindow = new google.maps.InfoWindow({
+                    content: `
+                        <div style="padding: 10px;">
+                            <strong>${farmer.name}</strong><br>
+                            ${farmer.distance} miles away<br>
+                            ${farmer.products}<br>
+                            <button style="background-color: #2D6A4F; color: white; border: none; 
+                            padding: 5px 10px; margin-top: 5px; border-radius: 5px; cursor: pointer;">
+                            Connect Now</button>
+                        </div>
+                    `
+                });
+                
+                // Open info window when marker is clicked
+                marker.addListener("click", () => {
+                    infoWindow.open(map, marker);
+                });
+            });
+        }
+        
+        // Update the farmers list in the UI
+        function updateFarmersList(farmers) {
+            const farmersList = document.querySelector('.farmers-list');
+            
+            // Clear existing farmers list
+            farmersList.innerHTML = '';
+            
+            if (farmers.length === 0) {
+                // No farmers found
+                farmersList.innerHTML = `
+                    <div style="text-align: center; width: 100%; padding: 30px;">
+                        <h3>No farmers found within 10 miles of your location</h3>
+                        <p>Try searching a different location or increasing the search radius</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Add each farmer to the list
+            farmers.forEach(farmer => {
+                const farmerCard = document.createElement('div');
+                farmerCard.className = 'farmer-card';
+                
+                // Create star rating based on farmer's rating
+                let stars = '';
+                for (let i = 1; i <= 5; i++) {
+                    stars += i <= farmer.rating ? '★' : '☆';
+                }
+                
+                farmerCard.innerHTML = `
+                    <span class="distance-badge">${farmer.distance} miles away</span>
+                    <img src="${farmer.image}" alt="${farmer.name}" class="farmer-image">
+                    <h3>${farmer.name}</h3>
+                    <div class="farmer-rating">${stars}</div>
+                    <div class="farmer-products">
+                        <strong>Products:</strong> ${farmer.products}
+                    </div>
+                    <button class="connect-btn">Connect Now</button>
+                `;
+                
+                farmersList.appendChild(farmerCard);
+            });
+        }
+    </script>
+    
+    <!-- Load Google Maps JavaScript API with Geocoding -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBljVBAkakyH_SdSnMH4USo0OwytaDB77g&libraries=places&callback=initMap" async defer></script>
+</body>
+</html>
