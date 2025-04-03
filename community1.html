@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dairy Farming Knowledge Sharing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #F0FBE4;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 100;
+            position: relative;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-left: 0;
+        }
+
+        .logo img {
+            height: 100px;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #264653;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #2D6A4F;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            background-color: #FF6B35;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Button */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 200;
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: #264653;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 250px;
+            height: 100vh;
+            background-color: #fff;
+            z-index: 150;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            padding-top: 80px;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav a {
+            text-decoration: none;
+            color: #264653;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 15px 25px;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav a:hover {
+            background-color: #f8f8f8;
+            color: #FF6B35;
+            padding-left: 30px;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 149;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #b0cfb4, #F0FBE4);
+            text-align: center;
+            padding: 100px 20px;
+            border-radius: 0 0 50px 50px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: #264653;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: #264653;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #FF6B35;
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(255,107,53,0.3);
+        }
+
+        .cta-button:hover {
+            background-color: #ff5722;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255,107,53,0.4);
+        }
+        
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
+        /* Search Bar */
+        .search-container {
+            display: flex;
+            max-width: 700px;
+            margin: 40px auto;
+        }
+
+        .search-input {
+            flex-grow: 1;
+            padding: 16px 20px;
+            border: 2px solid #ddd;
+            border-radius: 30px 0 0 30px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #FF6B35;
+            box-shadow: 0 0 0 2px rgba(255,107,53,0.2);
+        }
+
+        .search-button {
+            background-color: #FF6B35;
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .search-button:hover {
+            background-color: #ff5722;
+        }
+
+        /* Article Sections */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 30px;
+            color: #264653;
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: #FF6B35;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .article-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.09);
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border-top: 5px solid transparent;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+            border-top: 5px solid #FF6B35;
+        }
+
+        .article-card h3 {
+            margin-bottom: 15px;
+            color: #264653;
+            font-size: 1.4rem;
+        }
+
+        .article-card p {
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: #FF6B35;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 0;
+            position: relative;
+        }
+        
+        .read-more::after {
+            content: ' →';
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        .read-more:hover::after {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        /* Discussion Forum Section */
+        .forum-preview {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 50px 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.09);
+        }
+        
+        .discussion-topic {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .discussion-topic:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .topic-icon {
+            font-size: 24px;
+            color: #2D6A4F;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e8f5e9;
+            border-radius: 50%;
+        }
+        
+        .topic-content {
+            flex-grow: 1;
+        }
+        
+        .topic-stats {
+            text-align: right;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .view-all-btn {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: #2D6A4F;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        .view-all-btn:hover {
+            background-color: #1b4332;
+        }
+        
+        /* Community Join Form */
+        .join-form {
+            background: linear-gradient(135deg, #264653, #2A9D8F);
+            padding: 40px;
+            border-radius: 12px;
+            margin: 60px 0;
+            color: white;
+            box-shadow: 0 15px 30px rgba(42,157,143,0.3);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 6px;
+            background-color: rgba(255,255,255,0.9);
+            font-size: 1rem;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(255,255,255,0.2);
+        }
+        
+        .submit-btn {
+            background-color: #FF6B35;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: #ff5722;
+            transform: translateY(-3px);
+        }
+        
+        
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .logo img {
+                height: 80px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+
+            .logo img {
+                height: 70px;
+            }
+            
+            .article-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Animation for hamburger to X */
+            .menu-toggle.active span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+            
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .menu-toggle.active span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo.png" alt="Dairy Knowledge Logo">
+        </div>
+        <div class="nav-links">
+            <a href="index.html">HOME</a>
+            <a href="ai.html">AI-TECH</a>
+            <a href="ecomm.html">E COMMERCE</a>
+            <a href="community1.html">COMMUNITY</a>
+        </div>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <a href="index.html">HOME</a>
+        <a href="ai.html">AI-TECH</a>
+        <a href="ecomm.html">E COMMERCE</a>
+        <a href="community1.html">COMMUNITY</a>
+    </div>
+    
+    <div class="overlay"></div>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Sharing Dairy Farming Knowledge</h1>
+            <p>Connect with fellow Farmers, Share Experience and Grow Together</p>
+            <a href="#join-community" class="cta-button">JOIN NOW</a>
+        </div>
+    </section>
+
+    <div class="container search-container">
+        <input type="text" placeholder="Search articles, topics, techniques..." class="search-input">
+        <button class="search-button">Search</button>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">FEATURED ARTICLE</h2>
+        <div class="article-card">
+            <h3>Improving Milk Production Through Better Nutrition</h3>
+            <p>Learn how advanced nutrition strategies are helping farms to significantly increase production up to 35%. Our research team has identified key nutrients that not only improve yield but also enhance milk quality and cattle health. Discover the balanced feed formulas that are transforming the dairy industry.</p>
+            <a href="#" class="read-more">Read More</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">RECENT ARTICLES</h2>
+        <div class="article-grid">
+            <div class="article-card">
+                <h3>Sustainable Pasture Management Techniques</h3>
+                <p>Discover how innovative pasture management can improve livestock health and productivity while maintaining ecological balance in your farm environment...</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+            <div class="article-card">
+                <h3>Robotic Milking: One Year Later</h3>
+                <p>Exploring the transformative impact of robotic technology in modern dairy farming with real results from farms that made the transition...</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+            <div class="article-card">
+                <h3>Climate Adaptation for Dairy Farms</h3>
+                <p>Essential strategies to help your dairy operation adapt to changing climate conditions while maintaining optimal production levels...</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h2 class="section-title">COMMUNITY DISCUSSIONS</h2>
+        <div class="forum-preview">
+            <div class="discussion-topic">
+                <div class="topic-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="topic-content">
+                    <h3>Organic Feed Alternatives</h3>
+                    <p>Discussing cost-effective organic feed options for small dairy operations</p>
+                </div>
+                <div class="topic-stats">
+                    <p>24 replies</p>
+                    <p>Updated 2 days ago</p>
+                </div>
+            </div>
+            <div class="discussion-topic">
+                <div class="topic-icon">
+                    <i class="fas fa-tractor"></i>
+                </div>
+                <div class="topic-content">
+                    <h3>Equipment Sharing Network</h3>
+                    <p>Creating a local network for sharing specialized dairy equipment</p>
+                </div>
+                <div class="topic-stats">
+                    <p>37 replies</p>
+                    <p>Updated 5 hours ago</p>
+                </div>
+            </div>
+            <div class="discussion-topic">
+                <div class="topic-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="topic-content">
+                    <h3>Milk Price Forecasting</h3>
+                    <p>Analyzing market trends and predicting future milk prices</p>
+                </div>
+                <div class="topic-stats">
+                    <p>18 replies</p>
+                    <p>Updated yesterday</p>
+                </div>
+            </div>
+            <a href="#" class="view-all-btn">View All Discussions</a>
+        </div>
+    </div>
+    
+    <div class="container" id="join-community">
+        <h2 class="section-title">JOIN OUR COMMUNITY</h2>
+        <div class="join-form">
+            <form id="communityForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="farm">Farm Name/Location</label>
+                    <input type="text" id="farm" placeholder="Enter your farm name or location">
+                </div>
+                <div class="form-group">
+                    <label for="interests">Areas of Interest</label>
+                    <textarea id="interests" rows="4" placeholder="What dairy farming topics are you most interested in?"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Join Community</button>
+            </form>
+        </div>
+    </div>
+    
+    <style>
+        footer {
+            background-color: #1a2b3c;
+            color: #f5f5f5;
+            font-family: 'Open Sans', sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 40px 5% 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .footer-section {
+            flex: 1 1 250px;
+            margin-bottom: 30px;
+            padding-right: 20px;
+        }
+        
+        .footer-section.about {
+            flex: 1 1 300px;
+        }
+        
+        .footer-section h3 {
+            color: #8ecf4d;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 2px;
+            width: 50px;
+            background-color: #8ecf4d;
+        }
+        
+        .footer-section p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo {
+            margin-top: 20px;
+        }
+        
+        .footer-section.links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-section.links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section.links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .footer-section.links a:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            transition: transform 0.3s ease;
+        }
+        
+        .footer-section.links a:hover {
+            color: #8ecf4d;
+        }
+        
+        .footer-section.links a:hover:before {
+            transform: translateX(3px);
+        }
+        
+        .footer-section.contact i {
+            margin-right: 10px;
+            color: #8ecf4d;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .contact-btn {
+            background-color: #8ecf4d;
+            color: #1a2b3c;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+        
+        .contact-btn:hover {
+            background-color: #76b32d;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .newsletter-form input[type="email"] {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+        }
+        
+        .newsletter-form button {
+            background-color: #8ecf4d;
+            color: #1a2b3c;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            padding: 0 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #76b32d;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #2d3f50;
+            color: #fff;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: #8ecf4d;
+            transform: translateY(-3px);
+        }
+        
+        .footer-middle {
+            background-color: #162535;
+            padding: 20px 5%;
+            text-align: center;
+        }
+        
+        .footer-awards h4 {
+            color: #8ecf4d;
+            margin-bottom: 15px;
+        }
+        
+        .award-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .award-icons img {
+            height: 60px;
+            filter: grayscale(0.5);
+            transition: filter 0.3s ease;
+        }
+        
+        .award-icons img:hover {
+            filter: grayscale(0);
+        }
+        
+        .footer-bottom {
+            background-color: #14212f;
+            padding: 20px 5%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .footer-bottom p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        .footer-legal a {
+            color: #ddd;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-legal a:hover {
+            color: #8ecf4d;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+        }
+        
+        .back-to-top a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #8ecf4d;
+            color: #1a2b3c;
+            border-radius: 50%;
+            text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .back-to-top a:hover {
+            background-color: #76b32d;
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+            }
+            
+            .footer-section {
+                padding-right: 0;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input[type="email"] {
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-form button {
+                border-radius: 4px;
+                padding: 10px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+            }
+        }
+    </style>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section about">
+                <h3>About GauSanskriti</h3>
+                <p>Empowering farmers with advanced AI technology to preserve indigenous cattle breeds and promote sustainable agriculture practices.</p>
+                <div class="footer-logo">
+                    <img src="logo.png" alt="GauSanskriti Logo" width="120">
+                </div>
+            </div>
+            
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="ai.html">AI Technology</a></li>
+                    <li><a href="ecomm.html">E-Commerce</a></li>
+                    <li><a href="community1.html">Community</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> support@gausanskriti.com</p>
+                <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+                <p><i class="fas fa-map-marker-alt"></i> Delhi, India</p>
+                <button class="contact-btn">Get in Touch</button>
+            </div>
+            
+            <div class="footer-section newsletter">
+                <h3>Subscribe to Our Newsletter</h3>
+                <p>Stay updated with the latest developments in sustainable farming</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+            
+            <div class="footer-section social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="footer-middle">
+            <div class="footer-awards">
+                <h4>Recognition & Certifications</h4>
+                <div class="award-icons">
+                    <img src="assets/images/award1.png" alt="Certification 1">
+                    <img src="assets/images/award2.png" alt="Certification 2">
+                    <img src="assets/images/award3.png" alt="Certification 3">
+                </div>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            <p>&copy; 2025 GauSanskriti. All Rights Reserved.</p>
+            <div class="footer-legal">
+                <a href="privacy.html">Privacy Policy</a> | 
+                <a href="terms.html">Terms of Service</a> | 
+                <a href="cookies.html">Cookie Policy</a> |
+                <a href="sitemap.html">Sitemap</a>
+            </div>
+        </div>
+        
+        <div class="back-to-top">
+            <a href="#top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></a>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const overlay = document.querySelector('.overlay');
+        const body = document.body;
+
+        menuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            body.style.overflow = body.style.overflow === 'hidden' ? '' : 'hidden';
+        });
+
+        overlay.addEventListener('click', function() {
+            menuToggle.classList.remove('active');
+            mobileNav.classList.remove('active');
+            this.classList.remove('active');
+            body.style.overflow = '';
+        });
+
+        // Close mobile menu when window is resized beyond mobile breakpoint
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 576) {
+                menuToggle.classList.remove('active');
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                body.style.overflow = '';
+            }
+        });
+
+        // Enhanced search functionality
+        document.querySelector('.search-button').addEventListener('click', function() {
+            const searchInput = document.querySelector('.search-input');
+            if (searchInput.value.trim() !== '') {
+                // Visual feedback for search
+                searchInput.style.borderColor = '#2D6A4F';
+                
+                // Simulated search results (in a real app this would query a database)
+                console.log('Searching for: ' + searchInput.value);
+                alert('Searching for: ' + searchInput.value + '\nSearch results will appear here.');
+                
+                // Reset border after delay
+                setTimeout(() => {
+                    searchInput.style.borderColor = '#ddd';
+                }, 2000);
+            } else {
+                // Visual feedback for empty search
+                searchInput.style.borderColor = '#ff5722';
+                setTimeout(() => {
+                    searchInput.style.borderColor = '#ddd';
+                }, 2000);
+            }
+        });
+        
+        // Form submission handling
+        document.getElementById('communityForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Gather form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                farm: document.getElementById('farm').value,
+                interests: document.getElementById('interests').value
+            };
+            
+            // In a real application, you would send this to your server
+            console.log('Form submitted:', formData);
+            
+            // Show success message
+            alert('Thank you for joining our community! We will be in touch soon.');
+            
+            // Reset the form
+            this.reset();
+        });
+        
+        // Scroll to join section when CTA button is clicked
+        document.querySelector('.cta-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            const joinSection = document.getElementById('join-community');
+            joinSection.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Enhance article cards with animation effects
+        document.querySelectorAll('.article-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        });
+    </script>
+</body>
+</html>
