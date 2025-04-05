@@ -1,0 +1,390 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dairy Farming Knowledge Sharing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <script src="{% static 'js/api-client.js' %}"></script>
+    <script src="{% static 'js/api.js' %}"></script>
+    <script src="{% static 'js/offline-data.js' %}"></script>
+    <script src="{% static 'js/db-connection.js' %}"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="Dairy Knowledge Logo">
+        </div>
+        <div class="nav-links">
+            <a href="{% url 'index' %}">HOME</a>
+            <a href="{% url 'ai' %}">AI-TECH</a>
+            <a href="{% url 'ecomm' %}">E COMMERCE</a>
+            <a href="{% url 'community:home' %}">COMMUNITY</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}">{{ user.username }}</a>
+                <a href="{% url 'logout' %}">LOGOUT</a>
+            {% else %}
+                <a href="{% url 'login' %}">LOGIN</a>
+                <a href="{% url 'register' %}">REGISTER</a>
+            {% endif %}
+        </div>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <a href="{% url 'index' %}">HOME</a>
+        <a href="{% url 'ai' %}">AI-TECH</a>
+        <a href="{% url 'ecomm' %}">E COMMERCE</a>
+        <a href="{% url 'community:home' %}">COMMUNITY</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'profile' %}">{{ user.username }}</a>
+            <a href="{% url 'logout' %}">LOGOUT</a>
+        {% else %}
+            <a href="{% url 'login' %}">LOGIN</a>
+            <a href="{% url 'register' %}">REGISTER</a>
+        {% endif %}
+    </div>
+    
+    <div class="overlay"></div>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Sharing Dairy Farming Knowledge</h1>
+            <p>Connect with fellow Farmers, Share Experience and Grow Together</p>
+            <a href="#join-community" class="cta-button">JOIN NOW</a>
+        </div>
+    </section>
+
+    <div class="container search-container">
+        <form method="GET" action="{% url 'community:search' %}" class="search-form">
+            <input type="text" name="q" placeholder="Search articles, topics, techniques..." class="search-input" id="search-input">
+            <button type="submit" class="search-button">Search</button>
+        </form>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">FEATURED ARTICLE</h2>
+        <div id="featured-article-loading" class="loading-indicator">
+            <span class="spinner"></span> Loading featured article...
+        </div>
+        <div id="featured-article-container" style="display: none;">
+            <!-- Featured article will be loaded here dynamically -->
+        </div>
+        <div id="featured-article-error" class="error-message" style="display: none;">
+            <i class="fas fa-exclamation-circle"></i> Unable to load featured article. Please try again later.
+        </div>
+    </div>
+    
+    <div class="container">
+        <h2 class="section-title">RECENT ARTICLES</h2>
+        <div id="recent-articles-loading" class="loading-indicator">
+            <span class="spinner"></span> Loading recent articles...
+        </div>
+        <div id="recent-articles-container" class="article-grid" style="display: none;">
+            <!-- Recent articles will be loaded here dynamically -->
+        </div>
+        <div id="recent-articles-error" class="error-message" style="display: none;">
+            <i class="fas fa-exclamation-circle"></i> Unable to load recent articles. Please try again later.
+        </div>
+    </div>
+    
+    <div class="container">
+        <h2 class="section-title">COMMUNITY DISCUSSIONS</h2>
+        <div id="discussions-loading" class="loading-indicator">
+            <span class="spinner"></span> Loading discussions...
+        </div>
+        <div id="discussions-container" class="forum-preview" style="display: none;">
+            <!-- Discussions will be loaded here dynamically -->
+        </div>
+        <div id="discussions-error" class="error-message" style="display: none;">
+            <i class="fas fa-exclamation-circle"></i> Unable to load discussions. Please try again later.
+        </div>
+    </div>
+    
+    <div class="container" id="join-community">
+        <h2 class="section-title">JOIN OUR COMMUNITY</h2>
+        <div class="join-form">
+            <form id="communityForm">
+                {% crispy form %}
+                <button type="submit" class="submit-btn">Join Community</button>
+            </form>
+        </div>
+    </div>
+    
+    {% include 'footer.html' %}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check database connection
+            window.dbConnection.init('db-connection-status');
+            
+            // Load featured article
+            loadFeaturedArticle();
+            
+            // Load recent articles
+            loadRecentArticles();
+            
+            // Load discussions
+            loadDiscussions();
+            
+            // Handle community form submission
+            document.getElementById('communityForm').addEventListener('submit', handleFormSubmission);
+            
+            // Mobile menu toggle functionality
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const overlay = document.querySelector('.overlay');
+            const body = document.body;
+
+            menuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mobileNav.classList.toggle('active');
+                overlay.classList.toggle('active');
+                body.style.overflow = body.style.overflow === 'hidden' ? '' : 'hidden';
+            });
+
+            overlay.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                mobileNav.classList.remove('active');
+                this.classList.remove('active');
+                body.style.overflow = '';
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 576) {
+                    menuToggle.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                    overlay.classList.remove('active');
+                    body.style.overflow = '';
+                }
+            });
+
+            document.querySelector('.cta-button').addEventListener('click', function(e) {
+                e.preventDefault();
+                const joinSection = document.getElementById('join-community');
+                joinSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        
+        async function loadFeaturedArticle() {
+            const container = document.getElementById('featured-article-container');
+            const loading = document.getElementById('featured-article-loading');
+            const error = document.getElementById('featured-article-error');
+            
+            try {
+                loading.style.display = 'block';
+                container.style.display = 'none';
+                error.style.display = 'none';
+                
+                // Use the new apiClient for better fetch handling
+                const data = await window.apiClient.fetch('/community/featured/');
+                
+                if (data.article) {
+                    container.innerHTML = `
+                        <div class="article-card featured">
+                            <h3>${data.article.title}</h3>
+                            <p>${data.article.content.substring(0, 200)}...</p>
+                            <a href="/community/article/${data.article.id}" class="read-more">Read More</a>
+                        </div>
+                    `;
+                    container.style.display = 'block';
+                } else {
+                    throw new Error('No featured article found');
+                }
+            } catch (err) {
+                console.error('Failed to load featured article:', err);
+                error.style.display = 'block';
+                
+                // Try one more time with a different endpoint
+                try {
+                    const backupData = await window.apiClient.fetch('/community/highlight/');
+                    if (backupData.article) {
+                        container.innerHTML = `
+                            <div class="article-card featured">
+                                <h3>${backupData.article.title}</h3>
+                                <p>${backupData.article.content.substring(0, 200)}...</p>
+                                <a href="/community/article/${backupData.article.id}" class="read-more">Read More</a>
+                            </div>
+                        `;
+                        container.style.display = 'block';
+                        error.style.display = 'none';
+                    }
+                } catch (backupErr) {
+                    // Keep the original error displayed
+                    console.error('Backup endpoint also failed:', backupErr);
+                }
+            } finally {
+                loading.style.display = 'none';
+            }
+        }
+        
+        async function loadRecentArticles() {
+            const container = document.getElementById('recent-articles-container');
+            const loading = document.getElementById('recent-articles-loading');
+            const error = document.getElementById('recent-articles-error');
+            
+            try {
+                loading.style.display = 'block';
+                container.style.display = 'none';
+                error.style.display = 'none';
+                
+                // Use the new apiClient for better fetch handling
+                const data = await window.apiClient.fetch('/community/articles/?page=1');
+                
+                if (data.results && data.results.length > 0) {
+                    const articles = data.results.slice(0, 3);
+                    
+                    container.innerHTML = articles.map(article => `
+                        <div class="article-card">
+                            <h3>${article.title}</h3>
+                            <p>${article.content.substring(0, 120)}...</p>
+                            <a href="/community/article/${article.id}" class="read-more">Read More</a>
+                        </div>
+                    `).join('');
+                    
+                    container.style.display = 'grid';
+                } else {
+                    // If no results, show a helpful message
+                    container.innerHTML = `
+                        <div class="article-card">
+                            <h3>New Content Coming Soon</h3>
+                            <p>We're working on adding the latest articles about indigenous cattle farming. Check back soon for updates!</p>
+                        </div>
+                    `;
+                    container.style.display = 'grid';
+                }
+            } catch (err) {
+                console.error('Failed to load recent articles:', err);
+                error.style.display = 'block';
+            } finally {
+                loading.style.display = 'none';
+            }
+        }
+        
+        async function loadDiscussions() {
+            const container = document.getElementById('discussions-container');
+            const loading = document.getElementById('discussions-loading');
+            const error = document.getElementById('discussions-error');
+            
+            try {
+                loading.style.display = 'block';
+                container.style.display = 'none';
+                error.style.display = 'none';
+                
+                // Use the new apiClient for better fetch handling
+                const data = await window.apiClient.fetch('/community/discussions/?page=1');
+                
+                if (data.results && data.results.length > 0) {
+                    const discussions = data.results.slice(0, 3);
+                    
+                    const discussionsHtml = discussions.map(discussion => `
+                        <div class="discussion-topic">
+                            <div class="topic-icon">
+                                <i class="fas ${discussion.icon || 'fa-comments'}"></i>
+                            </div>
+                            <div class="topic-content">
+                                <h3>${discussion.topic}</h3>
+                                <p>${discussion.description}</p>
+                            </div>
+                            <div class="topic-stats">
+                                <p>${discussion.comments_count || 0} replies</p>
+                                <p>Updated ${formatDate(discussion.date_posted)}</p>
+                            </div>
+                        </div>
+                    `).join('');
+                    
+                    container.innerHTML = discussionsHtml + 
+                        '<a href="/community/discussions/" class="view-all-btn">View All Discussions</a>';
+                    
+                    container.style.display = 'block';
+                } else {
+                    // If no discussions, show placeholder content
+                    container.innerHTML = `
+                        <div class="discussion-topic">
+                            <div class="topic-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="topic-content">
+                                <h3>Start a New Discussion</h3>
+                                <p>Be the first to start a discussion about indigenous cattle farming!</p>
+                            </div>
+                            <div class="topic-stats">
+                                <p>0 replies</p>
+                                <p>Join now</p>
+                            </div>
+                        </div>
+                        <a href="/community/discussions/" class="view-all-btn">View All Discussions</a>
+                    `;
+                    container.style.display = 'block';
+                }
+            } catch (err) {
+                console.error('Failed to load discussions:', err);
+                error.style.display = 'block';
+            } finally {
+                loading.style.display = 'none';
+            }
+        }
+        
+        async function handleFormSubmission(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalBtnText = submitBtn.textContent;
+            
+            try {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting...';
+                
+                const formData = {
+                    name: form.querySelector('#id_name').value,
+                    email: form.querySelector('#id_email').value,
+                    interests: form.querySelector('#id_interests').value,
+                    farm_name: form.querySelector('#id_farm_name').value
+                };
+                
+                await window.apiClient.fetch('/community/join/', {
+                    method: 'POST',
+                    body: JSON.stringify(formData)
+                });
+                
+                alert('Thank you for joining our community! We will be in touch soon.');
+                
+                form.reset();
+                
+            } catch (err) {
+                console.error('Form submission failed:', err);
+                alert('Failed to submit form. Please try again later.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+            }
+        }
+        
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const now = new Date();
+            const diffTime = Math.abs(now - date);
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            
+            if (diffDays === 0) {
+                return 'today';
+            } else if (diffDays === 1) {
+                return 'yesterday';
+            } else if (diffDays < 7) {
+                return `${diffDays} days ago`;
+            } else {
+                return date.toLocaleDateString();
+            }
+        }
+    </script>
+</body>
+</html>

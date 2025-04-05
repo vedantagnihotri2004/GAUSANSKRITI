@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAUSANSKRITI - Indigenous Cow Breeds of India</title>
+    <link rel="stylesheet" href="landingpage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="landingpage.js" defer></script>
+    <script src="js/auth-check.js" defer></script>
+    <script>
+      // Register service worker for offline support
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+              console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            })
+            .catch(err => {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    </script>
+</head>
+<body>
+    <div id="firstcontainer" class="firstcontainer">
+        <div class="logo"></div>
+        <div class="menu">
+            <button onclick="window.location.href='index.html'">HOME</button>
+            <button onclick="window.location.href='ai.html'">AI-TECH</button>
+            <button onclick="window.location.href='ecomm.html'">E-COMM</button>
+            <button onclick="window.location.href='community1.html'">COMMUNITY</button>
+            <button id="getstart"><a href="loginpage.html" style="text-decoration:none;color:inherit;">GET STARTED</a></button>
+        </div>
+    </div>
+    
+    <div class="secondcontainer">
+        <div class="text">  
+            <p id="one">Indigenous Cow: The</p>
+            <p><span id="two">Eco-Warriors</span> <span id="three">of Bharat</span></p>
+            <p id="four">Empowering farmers and preserving indigenous cow breeds through innovative technology and sustainable practices</p>
+            <button id="getstarts" onclick="window.location.href='ai.html'">GET STARTED</button>
+        </div>
+        <div class="imageone"></div>
+    </div>
+    
+    <h1 class="heritage-title">Indigenous cow breed heritage</h1>
+    
+    <div class="allimage1">
+        <div class="firstline">
+            <div class="IMAGES">
+                <img id="menuimage" src="IMAGE1.JPG" alt="Gir Cow">
+                <h2 id="firstlinetext">Gir</h2>
+                <p id="firstlinetexts">Heat-resistant and high-yielding, Gir cows from Gujarat are known for their rich, nutritious milk</p>
+            </div>
+            <div class="IMAGES">
+                <img id="menuimage" src="IMAGE2.JPG" alt="Sahiwal Cow">
+                <h2 id="firstlinetext">Sahiwal</h2>
+                <p id="firstlinetexts">Punjab's finest milking breed, Sahiwal cows excel in heat tolerance, disease resistance, and superior milk quality.</p>
+            </div>
+            <div class="IMAGES">
+                <img id="menuimage" src="IMAGE3.JPG" alt="Red Sindhi Cow">
+                <h2 id="firstlinetext">Red Sindhi</h2>
+                <p id="firstlinetexts">Hardy and adaptable, Red Sindhi cows from Sindh thrive in hot climates, producing high-fat milk.</p>
+            </div>
+            <div class="IMAGES">
+                <img id="menuimage" src="IMAGE4.JPG" alt="Tharparkar Cow">
+                <h2 id="firstlinetext">Tharparkar</h2>
+                <p id="firstlinetexts">Originating from Rajasthan's Thar Desert, Tharparkar cows are drought-resistant, dual-purpose, and high milk yielders.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="allimage2">
+        <div class="secondline">
+            <div class="IMAGES">
+                <img id="menuimage" src="IMAGE5.JPG" alt="Kankrej Cow">
+                <h2 id="firstlinetext">Kankrej</h2>
+                <p id="firstlinetexts">Gujarat-Rajasthan's Kankrej breed is strong, disease-resistant, and valued for both milk production and draught power.</p>
+            </div>
+            <div class="IMAGES">
+                <img id="menuimage" src="IMAGE6.JPG" alt="Ongole Cow">
+                <h2 id="firstlinetext">Ongole</h2>
+                <p id="firstlinetexts">Andhra Pradesh's Ongole breed is globally renowned for its strength, disease resistance, and dairy potential.</p>
+            </div>
+            <div class="IMAGES">
+                <img id="menuimage" src="IMAGE7.JPG" alt="Hallikar Cow">
+                <h2 id="firstlinetext">Hallikar</h2>
+                <p id="firstlinetexts">Karnataka's Hallikar cattle are powerful draught animals, widely used for plowing and traditional agricultural activities.</p>
+            </div>
+            <div class="IMAGES">
+                <img id="menuimage" src="IMAGE8.jpg" alt="Vechur Cow">
+                <h2 id="firstlinetext">Vechur</h2>
+                <p id="firstlinetexts">Kerala's Vechur cow, the world's smallest breed, produces highly nutritious milk with medicinal properties.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="keyheading">
+        <p>Key Problems In Indigenous Cattle Sector</p>
+    </div>
+    
+    <div class="firstlinebox1">
+        <div class="firstlinebox">
+            <div class="boxes">
+                <i class="fa-solid fa-dna"></i>
+                <h2 id="mainword1">Population Decline</h2>
+                <p id="mainword2">Rapid decrease in pure indigenous cattle population due to crossbreeding and lack of preservation efforts.</p>
+            </div>
+            <div class="boxes">
+                <i class="fa-solid fa-brain"></i>
+                <h2 id="mainword1">Knowledge Gap</h2>
+                <p id="mainword2">Loss of traditional knowledge and lack of awareness about indigenous breeds' benefits.</p>
+            </div>
+            <div class="boxes">
+                <i class="fa-solid fa-chart-line"></i>
+                <h2 id="mainword1">Economic Viability</h2>
+                <p id="mainword2">Lower milk yields making indigenous cattle farming less profitable for farmers.</p>
+            </div>
+            <div class="boxes">
+                <i class="fa-solid fa-dna"></i>
+                <h2 id="mainword1">Genetic Degradation</h2>
+                <p id="mainword2">Poor breeding practices leading to loss of pure indigenous genetic traits.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="secondlinebox1">
+        <div class="secondlinebox">
+            <div class="boxes">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <h2 id="mainword1">Health Monitoring</h2>
+                <p id="mainword2">Limited access to veterinary care and lack of real-time health monitoring systems.</p>
+            </div>
+            <div class="boxes">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <h2 id="mainword1">Product Utilization</h2>
+                <p id="mainword2">Underutilization of valuable cow-based products and lack of proper market channels.</p>
+            </div>
+            <div class="boxes">
+                <i class="fa-solid fa-chart-pie"></i>
+                <h2 id="mainword1">Data Management</h2>
+                <p id="mainword2">Inefficient farm data tracking and lack of analytical insights for decision making.</p>
+            </div>
+            <div class="boxes">
+                <i class="fa-solid fa-handshake"></i>
+                <h2 id="mainword1">Government Support</h2>
+                <p id="mainword2">Limited integration with government schemes and NGO support programs.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mainheading">
+        <p>Our innovative Solutions</p>
+    </div>
+    
+    <div class="fourthone">
+        <div class="table1">
+            <p id="table">AI Technology Solutions</p>
+            <div class="a">
+                <i class="fa-solid fa-microchip"></i>
+                <h4 id="insideheading">AI-Powered Identification</h4>
+                <p id="insidepara">Blockchain-based certification and AI-powered breed identification system</p>
+            </div>
+            <div class="a">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h4 id="insideheading">Digital Knowledge Hub</h4>
+                <p id="insidepara">Educational content and training modules for traditional knowledge preservation</p> 
+            </div>
+            <div class="a">
+                <i class="fa-solid fa-database"></i>
+                <h4 id="insideheading">Digital Records</h4>
+                <p id="insidepara">Systematic breeding recommendations and genetic tracking system</p> 
+            </div>
+        </div>
+        <div class="table2">
+            <p id="table">E-commerce Integration</p>
+            <div class="a">
+                <i class="fa-solid fa-shop"></i>
+                <h4 id="insideheading">Original Product Delivery</h4>
+                <p id="insidepara">Delivery of A2 milk and other indigenous cattle byproducts</p> 
+            </div>
+        </div>
+        <div class="table3">
+            <p id="table">Smart Monitoring</p>
+            <div class="a">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <h4 id="insideheading">IoT Health Tracking</h4>
+                <p id="insidepara">Real-time monitoring of cattle health parameters</p>
+            </div>
+            <div class="a">
+                <i class="fa-solid fa-chart-line"></i>
+                <h4 id="insideheading">Performance Analytics</h4>
+                <p id="insidepara">Data-driven insights for optimal cattle management</p> 
+            </div>
+            <div class="a">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <h4 id="insideheading">Mobile Alerts</h4>
+                <p id="insidepara">Instant notifications about cattle health and maintenance</p> 
+            </div>
+        </div>
+        <div class="table4">
+            <p id="table">Dashboard Solutions</p>
+            <div class="a">
+                <i class="fa-solid fa-gauge-high"></i>
+                <h4 id="insideheading">Farm Management</h4>
+                <p id="insidepara">Comprehensive dashboard for farm operations and metrics</p>
+            </div>
+            <div class="a">
+                <i class="fa-solid fa-globe"></i>
+                <h4 id="insideheading">Community Integration</h4>
+                <p id="insidepara">Connect with other indigenous cow farmers and experts</p>
+            </div>
+        </div>
+        <div class="mainheading">
+         <p>What Our User Say</p>
+      </div>
+     <div class="fifth">
+      <button class="slide-btn left" onclick="scrollLeft()">&#10094;</button>
+      <div class="short-slider">
+        <div class="slider-container">
+          <div class="b">
+            <div class="img1"></div>
+            <h3 id="name">Vedant Agnihotri</h3>
+            <h5 id="imgico" style="padding-left: 120px;">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </h5>
+            <br>
+            <p style="padding-left: 20px;" id="insideparas">
+              "The AI health monitoring system has transformed how I care for my indigenous cows. My productivity has increased significantly."
+            </p>
+          </div>
+          <div class="b">
+            <div class="img2"></div>
+            <h3 id="name">Somya Tyagi</h3>
+            <h5 id="imgico" style="padding-left: 120px">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </h5>
+            <br>
+            <p style="padding-left: 20px;" id="insideparas">
+              "The e-commerce platform has helped me connect directly with customers. My income from indigenous cow products has doubled."
+            </p>
+          </div>
+          <div class="b">
+            <div class="img3"></div>
+            <h3 id="name">Swayam Sharma</h3>
+            <h5 id="imgico" style="padding-left: 120px;">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </h5>
+            <br>
+            <p style="padding-left: 20px;" id="insideparas">
+              "The breed authentication system ensures the purity of our indigenous cows. It's a game-changer for traditional farming."
+            </p>
+          </div>
+          <div class="b">
+            <div class="img2"></div>
+            <h3 id="name">Mukul Parmar</h3>
+            <h5 id="imgico" style="padding-left: 120px">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </h5>
+            <br>
+            <p style="padding-left: 20px;" id="insideparas">
+              "The e-commerce platform has helped me connect directly with customers. My income from indigenous cow products has doubled."
+            </p>
+          </div>
+        </div>
+      </div>
+      <button class="slide-btn right" onclick="scrollRight()">&#10095;</button>
+     </div>
+     <style>
+      footer {
+          background-color: #1a2b3c;
+          color: #f5f5f5;
+          font-family: 'Open Sans', sans-serif;
+          padding: 0;
+          margin: 0;
+      }
+      
+      .footer-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          padding: 40px 5% 20px;
+          max-width: 1400px;
+          margin: 0 auto;
+      }
+      
+      .footer-section {
+          flex: 1 1 250px;
+          margin-bottom: 30px;
+          padding-right: 20px;
+      }
+      
+      .footer-section.about {
+          flex: 1 1 300px;
+      }
+      
+      .footer-section h3 {
+          color: #8ecf4d;
+          font-size: 1.2rem;
+          margin-bottom: 20px;
+          position: relative;
+          padding-bottom: 10px;
+      }
+      
+      .footer-section h3::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          height: 2px;
+          width: 50px;
+          background-color: #8ecf4d;
+      }
+      
+      .footer-section p {
+          line-height: 1.6;
+          margin-bottom: 15px;
+      }
+      
+      .footer-logo {
+          margin-top: 20px;
+      }
+      
+      .footer-section.links ul {
+          list-style: none;
+          padding: 0;
+      }
+      
+      .footer-section.links li {
+          margin-bottom: 10px;
+      }
+      
+      .footer-section.links a {
+          color: #ddd;
+          text-decoration: none;
+          transition: color 0.3s ease;
+          position: relative;
+          padding-left: 15px;
+      }
+      
+      .footer-section.links a:before {
+          content: '→';
+          position: absolute;
+          left: 0;
+          transition: transform 0.3s ease;
+      }
+      
+      .footer-section.links a:hover {
+          color: #8ecf4d;
+      }
+      
+      .footer-section.links a:hover:before {
+          transform: translateX(3px);
+      }
+      
+      .footer-section.contact i {
+          margin-right: 10px;
+          color: #8ecf4d;
+          width: 20px;
+          text-align: center;
+      }
+      
+      .contact-btn {
+          background-color: #8ecf4d;
+          color: #1a2b3c;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 4px;
+          cursor: pointer;
+          font-weight: bold;
+          margin-top: 15px;
+          transition: background-color 0.3s;
+      }
+      
+      .contact-btn:hover {
+          background-color: #76b32d;
+      }
+      
+      .newsletter-form {
+          display: flex;
+          margin-top: 20px;
+      }
+      
+      .newsletter-form input[type="email"] {
+          flex: 1;
+          padding: 12px;
+          border: none;
+          border-radius: 4px 0 0 4px;
+          outline: none;
+      }
+      
+      .newsletter-form button {
+          background-color: #8ecf4d;
+          color: #1a2b3c;
+          border: none;
+          border-radius: 0 4px 4px 0;
+          padding: 0 15px;
+          cursor: pointer;
+          font-weight: bold;
+          transition: background-color 0.3s;
+      }
+      
+      .newsletter-form button:hover {
+          background-color: #76b32d;
+      }
+      
+      .social-icons {
+          display: flex;
+          gap: 10px;
+          margin-top: 15px;
+      }
+      
+      .social-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          background-color: #2d3f50;
+          color: #fff;
+          border-radius: 50%;
+          text-decoration: none;
+          transition: all 0.3s ease;
+      }
+      
+      .social-icon:hover {
+          background-color: #8ecf4d;
+          transform: translateY(-3px);
+      }
+      
+      .footer-middle {
+          background-color: #162535;
+          padding: 20px 5%;
+          text-align: center;
+      }
+      
+      .footer-awards h4 {
+          color: #8ecf4d;
+          margin-bottom: 15px;
+      }
+      
+      .award-icons {
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+          flex-wrap: wrap;
+      }
+      
+      .award-icons img {
+          height: 60px;
+          filter: grayscale(0.5);
+          transition: filter 0.3s ease;
+      }
+      
+      .award-icons img:hover {
+          filter: grayscale(0);
+      }
+      
+      .footer-bottom {
+          background-color: #14212f;
+          padding: 20px 5%;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+      }
+      
+      .footer-bottom p {
+          margin: 0;
+          font-size: 0.9rem;
+      }
+      
+      .footer-legal a {
+          color: #ddd;
+          text-decoration: none;
+          font-size: 0.9rem;
+          transition: color 0.3s;
+      }
+      
+      .footer-legal a:hover {
+          color: #8ecf4d;
+      }
+      
+      .back-to-top {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          z-index: 99;
+      }
+      
+      .back-to-top a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          background-color: #8ecf4d;
+          color: #1a2b3c;
+          border-radius: 50%;
+          text-decoration: none;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+          transition: all 0.3s;
+      }
+      
+      .back-to-top a:hover {
+          background-color: #76b32d;
+          transform: translateY(-3px);
+      }
+      
+      /* Responsive design */
+      @media (max-width: 768px) {
+          .footer-container {
+              flex-direction: column;
+          }
+          
+          .footer-section {
+              padding-right: 0;
+          }
+          
+          .newsletter-form {
+              flex-direction: column;
+          }
+          
+          .newsletter-form input[type="email"] {
+              border-radius: 4px;
+              margin-bottom: 10px;
+          }
+          
+          .newsletter-form button {
+              border-radius: 4px;
+              padding: 10px;
+          }
+          
+          .footer-bottom {
+              flex-direction: column;
+          }
+      }
+  </style>
+  
+  <footer>
+      <div class="footer-container">
+          <div class="footer-section about">
+              <h3>About GauSanskriti</h3>
+              <p>Empowering farmers with advanced AI technology to preserve indigenous cattle breeds and promote sustainable agriculture practices.</p>
+              <div class="footer-logo">
+                  <img src="logo.png" alt="GauSanskriti Logo" width="120">
+              </div>
+          </div>
+          
+          <div class="footer-section links">
+              <h3>Quick Links</h3>
+              <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="ai.html">AI Technology</a></li>
+                  <li><a href="ecomm.html">E-Commerce</a></li>
+                  <li><a href="community1.html">Community</a></li>
+                  <li><a href="resources.html">Resources</a></li>
+                  <li><a href="blog.html">Blog</a></li>
+                  <li><a href="faq.html">FAQ</a></li>
+              </ul>
+          </div>
+          
+          <div class="footer-section contact">
+              <h3>Contact Us</h3>
+              <p><i class="fas fa-envelope"></i> support@gausanskriti.com</p>
+              <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+              <p><i class="fas fa-map-marker-alt"></i> Delhi, India</p>
+              <button class="contact-btn">Get in Touch</button>
+          </div>
+          
+          <div class="footer-section newsletter">
+              <h3>Subscribe to Our Newsletter</h3>
+              <p>Stay updated with the latest developments in sustainable farming</p>
+              <form class="newsletter-form">
+                  <input type="email" placeholder="Enter your email" required>
+                  <button type="submit">Subscribe</button>
+              </form>
+          </div>
+          
+          <div class="footer-section social">
+              <h3>Follow Us</h3>
+              <div class="social-icons">
+                  <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                  <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                  <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+          </div>
+      </div>
+  
+      <div class="footer-middle">
+          <div class="footer-awards">
+              <h4>Recognition & Certifications</h4>
+              <div class="award-icons">
+                  <img src="images/award1.png" alt="Certification 1" onerror="this.src='images/placeholder-award.png'; this.onerror=null;">
+                  <img src="images/award2.png" alt="Certification 2" onerror="this.src='images/placeholder-award.png'; this.onerror=null;">
+                  <img src="images/award3.png" alt="Certification 3" onerror="this.src='images/placeholder-award.png'; this.onerror=null;">
+                  <img src="images/award4.png" alt="Certification 4" onerror="this.src='images/placeholder-award.png'; this.onerror=null;">
+              </div>
+          </div>
+      </div>
+  
+      <div class="footer-bottom">
+          <div class="footer-app-download">
+              <p>Download our mobile app</p>
+              <div class="app-buttons">
+                  <a href="#" class="app-button">
+                      <i class="fab fa-google-play"></i> Google Play
+                  </a>
+                  <a href="#" class="app-button">
+                      <i class="fab fa-apple"></i> App Store
+                  </a>
+              </div>
+          </div>
+          <p>&copy; 2025 GauSanskriti. All Rights Reserved.</p>
+          <div class="footer-legal">
+              <a href="privacy.html">Privacy Policy</a> | 
+              <a href="terms.html">Terms of Service</a> | 
+              <a href="cookies.html">Cookie Policy</a> |
+              <a href="sitemap.html">Sitemap</a> |
+              <div class="language-selector">
+                  <select id="language-select" onchange="changeLanguage(this.value)">
+                      <option value="en">English</option>
+                      <option value="hi">हिंदी</option>
+                      <option value="gu">ગુજરાતી</option>
+                      <option value="pa">ਪੰਜਾਬੀ</option>
+                  </select>
+              </div>
+          </div>
+      </div>
+      
+      <div class="back-to-top">
+          <a href="#top" id="scroll-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></a>
+      </div>
+  </footer>
+
+  <script src="slider.js"></script>
+  <script>
+      // Smooth scroll for back-to-top button
+      document.getElementById('scroll-to-top').addEventListener('click', function(e) {
+          e.preventDefault();
+          window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+          });
+      });
+
+      // Newsletter form validation
+      const newsletterForm = document.querySelector('.newsletter-form');
+      if (newsletterForm) {
+          newsletterForm.addEventListener('submit', function(e) {
+              e.preventDefault();
+              const emailInput = this.querySelector('input[type="email"]');
+              if (emailInput.validity.valid) {
+                  // Success message
+                  let successMsg = document.createElement('p');
+                  successMsg.textContent = 'Thank you for subscribing!';
+                  successMsg.className = 'success-msg';
+                  successMsg.style.color = '#8ecf4d';
+                  emailInput.value = '';
+                  
+                  // Replace the existing success message if any
+                  const existingMsg = this.querySelector('.success-msg');
+                  if (existingMsg) {
+                      this.removeChild(existingMsg);
+                  }
+                  
+                  this.appendChild(successMsg);
+                  
+                  // Remove the message after 3 seconds
+                  setTimeout(() => {
+                      if (successMsg.parentNode) {
+                          successMsg.parentNode.removeChild(successMsg);
+                      }
+                  }, 3000);
+              }
+          });
+      }
+
+      // Function to change language
+      function changeLanguage(language) {
+          // Language change implementation goes here
+          console.log(`Language changed to: ${language}`);
+          // In a real implementation, this would update the page content
+      }
+  </script>
+
+  <style>
+      /* Enhanced Footer Styles */
+      footer {
+          background-color: #1a2b3c;
+          color: #f5f5f5;
+          font-family: 'Poppins', 'Open Sans', sans-serif;
+          padding: 0;
+          margin: 0;
+      }
+      
+      /* Existing footer styles... */
+      
+      /* Enhanced styles */
+      .footer-section h3 {
+          color: #8ecf4d;
+          font-size: 1.3rem;
+          margin-bottom: 22px;
+          position: relative;
+          padding-bottom: 12px;
+          font-weight: 600;
+      }
+      
+      .footer-section h3::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          height: 3px;
+          width: 60px;
+          background-color: #8ecf4d;
+          border-radius: 2px;
+      }
+      
+      .footer-section.links a {
+          color: #ddd;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          position: relative;
+          padding-left: 18px;
+          display: inline-block;
+      }
+      
+      .footer-section.links a:before {
+          content: '→';
+          position: absolute;
+          left: 0;
+          transition: transform 0.3s ease;
+      }
+      
+      .footer-section.links a:hover {
+          color: #8ecf4d;
+          transform: translateX(5px);
+      }
+      
+      .social-icons {
+          display: flex;
+          gap: 15px;
+          margin-top: 20px;
+      }
+      
+      .social-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 42px;
+          height: 42px;
+          background-color: #2d3f50;
+          color: #fff;
+          border-radius: 50%;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          font-size: 1.1rem;
+          box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+      }
+      
+      .social-icon:hover {
+          background-color: #8ecf4d;
+          transform: translateY(-5px) rotate(360deg);
+          box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+      }
+      
+      .newsletter-form input[type="email"] {
+          flex: 1;
+          padding: 14px;
+          border: none;
+          border-radius: 5px 0 0 5px;
+          outline: none;
+          font-size: 0.95rem;
+          box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+      }
+      
+      .newsletter-form button {
+          background-color: #8ecf4d;
+          color: #1a2b3c;
+          border: none;
+          border-radius: 0 5px 5px 0;
+          padding: 0 20px;
+          cursor: pointer;
+          font-weight: bold;
+          transition: all 0.3s ease;
+          font-size: 0.95rem;
+      }
+      
+      .newsletter-form button:hover {
+          background-color: #76b32d;
+          transform: translateX(3px);
+      }
+      
+      .footer-app-download {
+          margin: 15px 0;
+          text-align: center;
+      }
+      
+      .app-buttons {
+          display: flex;
+          justify-content: center;
+          gap: 15px;
+          margin-top: 10px;
+      }
+      
+      .app-button {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background-color: #2d3f50;
+          color: #fff;
+          padding: 8px 15px;
+          border-radius: 5px;
+          text-decoration: none;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+      }
+      
+      .app-button:hover {
+          background-color: #8ecf4d;
+          transform: translateY(-3px);
+      }
+      
+      .language-selector {
+          display: inline-block;
+          margin-left: 10px;
+      }
+      
+      #language-select {
+          background-color: #2d3f50;
+          color: #fff;
+          border: 1px solid #456;
+          padding: 5px;
+          border-radius: 4px;
+          font-size: 0.8rem;
+          cursor: pointer;
+      }
+      
+      #language-select:focus {
+          outline: none;
+          border-color: #8ecf4d;
+      }
+      
+      .back-to-top a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 45px;
+          height: 45px;
+          background-color: #8ecf4d;
+          color: #1a2b3c;
+          border-radius: 50%;
+          text-decoration: none;
+          box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+          transition: all 0.3s;
+          font-size: 1.2rem;
+      }
+      
+      .back-to-top a:hover {
+          background-color: #76b32d;
+          transform: translateY(-5px);
+          box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
+      }
+      
+      /* Improved responsive styles */
+      @media (max-width: 768px) {
+          .app-buttons {
+              flex-direction: column;
+              align-items: center;
+          }
+          
+          .footer-legal {
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+              align-items: center;
+          }
+          
+          .language-selector {
+              margin-top: 10px;
+              margin-left: 0;
+          }
+      }
+  </style>
+</body>
+</html>

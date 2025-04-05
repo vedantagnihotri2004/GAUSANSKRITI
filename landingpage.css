@@ -1,0 +1,699 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', 'Poppins', sans-serif;
+}
+
+.firstcontainer{
+    height: auto;
+    width: 100%;
+    background-color: #c2e9bd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo{
+    height: 140px;
+    width: 140px;
+    background-color:#c2e9bd;
+    background-image: url('logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+}
+
+.menu button {
+    background-color: transparent;
+    color: #333;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    margin: 0 16px;
+    padding: 10px 18px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.menu button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+#getstart{
+    background-color: #FF8357;
+    color: #fff;
+    font-weight: 600;
+    margin: 0 10px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(255, 131, 87, 0.3);
+    transition: all 0.3s ease;
+}
+
+#getstart:hover {
+    background-color: #e96c40;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(255, 131, 87, 0.4);
+}
+
+.secondcontainer{
+    min-height: 90vh;
+    width: 100%;
+    background-color: #c2e9bd;
+    display: flex;
+    padding: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.text{
+    width: 50%;
+    padding: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+#one{
+    margin-top: 80px;
+    font-size: 48px;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.2;
+}
+
+#one, #two, #three {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    color: #333;
+    line-height: 1.2;
+}
+
+#two{
+    color: #FF8357;
+}
+
+#four{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    color: #555;
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+#getstarts{
+    background-color: #FF8357;
+    color: #fff;
+    font-weight: 600;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 30px;
+    margin-top: 40px;
+    box-shadow: 0 4px 8px rgba(255, 131, 87, 0.3);
+    transition: all 0.3s ease;
+}
+
+#getstarts:hover {
+    background-color: #e96c40;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(255, 131, 87, 0.4);
+}
+
+.imageone{
+    background-image: url('unnamed.png');
+    background-size: cover;
+    background-position: center;
+    border: none;
+    border-radius: 20px;
+    height: 450px;
+    width: 600px;
+    position: absolute;
+    top: 100px;
+    right: 50px;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.5s ease;
+}
+
+.heritage-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin: 80px 0 40px;
+    padding: 0 20px;
+}
+
+.allimage1, #allimage2 {
+    padding: 20px 50px;
+    background-color: #c2e9bd;
+}
+
+.firstline, .secondline {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.IMAGES{
+    height: 340px;
+    width: 290px;
+    background-color: white;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.IMAGES:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+#menuimage{
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+#firstlinetext{
+    padding: 15px 20px 5px;
+    font-size: 22px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#firstlinetexts{
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+    padding: 0 20px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.keyheading{
+    text-align: center;
+    padding: 60px 0 30px;
+    background-color: #c2e9bd;
+}
+
+.keyheading p {
+    font-size: 36px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+}
+
+.firstlinebox1, .secondlinebox1 {
+    padding: 0 50px 50px;
+    background-color: #c2e9bd;
+}
+
+.firstlinebox, .secondlinebox {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.boxes{
+    height: 162px;
+    width: 290px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.boxes:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.boxes i {
+    font-size: 24px;
+    color: #FF8357;
+    margin-bottom: 10px;
+}
+
+#mainword1{
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 10px;
+}
+
+#mainword2{
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+    color: #555;
+    line-height: 1.5;
+}
+
+.mainheading{
+    text-align: center;
+    padding: 60px 0 30px;
+    background-color: #c2e9bd;
+}
+
+.mainheading p {
+    font-size: 36px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+}
+
+.fourthone{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 50px 50px;
+    background-color: #c2e9bd;
+}
+
+.table1, .table2, .table3, .table4 {
+    flex: 1;
+    min-width: 300px;
+    padding: 0 20px;
+    margin-bottom: 30px;
+}
+
+#table{
+    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.a {
+    margin-bottom: 25px;
+}
+
+.a i {
+    font-size: 24px;
+    color: #FF8357;
+    margin-bottom: 10px;
+}
+
+#insideheading {
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 10px;
+}
+
+#insidepara {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* What Our Users Say Section */
+.fifth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto;
+    max-width: 1200px;
+    position: relative;
+    padding: 0 20px;
+}
+
+.short-slider {
+    width: 90%;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0;
+}
+
+.slider-container {
+    display: flex;
+    transition: transform 0.5s ease;
+    gap: 20px;
+}
+
+.slide-btn {
+    background-color: #4F46BA;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide-btn:hover {
+    background-color: #3a3591;
+}
+
+.b {
+    min-width: 300px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.b:hover {
+    transform: translateY(-5px);
+}
+
+.img1, .img2, .img3 {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    margin: 0 auto 15px;
+    border: 3px solid #4F46BA;
+}
+
+.img1 {
+    background-image: url('vedf.avif');
+}
+
+.img2 {
+    background-image: url('somf.jpg');
+}
+
+.img3 {
+    background-image: url('swaf.jpg');
+}
+
+#name {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+#imgico {
+    text-align: center;
+    margin: 0;
+}
+
+#imgico .fa-star {
+    color: #FFD700;
+    margin: 0 2px;
+}
+
+#insideparas {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+    text-align: center;
+    font-style: italic;
+    padding: 0 !important;
+    margin-top: 10px;
+}
+
+
+/* Mobile Menu */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* Responsive adjustments - Enhanced */
+@media (max-width: 1400px) {
+    .text {
+        padding: 30px;
+    }
+    
+    #one, #two, #three {
+        font-size: 42px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .imageone {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin: 30px auto;
+        width: 90%;
+        max-width: 500px;
+        height: 350px;
+    }
+    
+    .secondcontainer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .text {
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #four {
+        max-width: 700px;
+    }
+
+    /* What Our Users Say responsive adjustments */
+    .fifth {
+        margin: 40px auto;
+        padding: 0 10px;
+    }
+    
+    .short-slider {
+        width: 100%;
+    }
+    
+    .b {
+        min-width: 280px;
+    }
+}
+
+@media (max-width: 992px) {
+    .menu button {
+        padding: 8px 12px;
+        margin: 0 8px;
+        font-size: 14px;
+    }
+    
+    #getstart {
+        padding: 10px 18px;
+    }
+    
+    .onne, .onnes {
+        flex: 0 0 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+        position: absolute;
+        top: 30px;
+        right: 20px;
+    }
+    
+    .firstcontainer {
+        flex-direction: column;
+        padding: 10px;
+        position: relative;
+    }
+    
+    .logo {
+        margin: 0 auto;
+    }
+    
+    .menu {
+        margin-top: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+    }
+    
+    .menu.active {
+        max-height: 300px;
+    }
+    
+    .menu button {
+        margin: 5px;
+        width: 80%;
+    }
+    
+    #one, #two, #three {
+        font-size: 32px;
+    }
+    
+    #four {
+        font-size: 18px;
+    }
+    
+    .fourthone {
+        flex-direction: column;
+        padding: 0 20px 30px;
+    }
+  
+    /* What Our Users Say responsive adjustments */
+    .fifth {
+        flex-direction: column;
+        margin: 30px auto;
+    }
+    
+    .slide-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 20;
+    }
+    
+    .slide-btn:first-of-type {
+        left: 0;
+    }
+    
+    .slide-btn:last-of-type {
+        right: 0;
+    }
+    
+    .short-slider {
+        width: 85%;
+        padding: 20px 10px;
+    }
+    
+    .b {
+        min-width: 260px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 30px 15px 20px;
+    }
+    
+    .logo2 {
+        height: 80px;
+        width: 160px;
+    }
+    
+    .onnes i {
+        font-size: 18px;
+        margin: 8px 10px;
+    }
+    
+    /* What Our Users Say responsive adjustments */
+    .fifth {
+        margin: 20px auto;
+    }
+    
+    .short-slider {
+        width: 80%;
+        margin: 0 auto;
+    }
+    
+    .slide-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+    
+    .b {
+        min-width: 100%;
+        padding: 15px 10px;
+    }
+    
+    .img1, .img2, .img3 {
+        width: 60px;
+        height: 60px;
+        border-width: 2px;
+    }
+    
+    #name {
+        font-size: 15px;
+    }
+    
+    #imgico .fa-star {
+        font-size: 12px;
+    }
+    
+    #insideparas {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 360px) {
+    /* Extra small device adjustments */
+    .b {
+        padding: 12px 8px;
+    }
+    
+    #insideparas {
+        font-size: 12px;
+    }
+    
+    .onnes i {
+        font-size: 16px;
+        margin: 6px 8px;
+    }
+}
+
+/* Fix horizontal overflow */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Add smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
